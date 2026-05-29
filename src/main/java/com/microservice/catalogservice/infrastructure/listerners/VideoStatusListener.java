@@ -1,8 +1,8 @@
 package com.microservice.catalogservice.infrastructure.listerners;
 
 import com.microservice.catalogservice.application.usecases.VideoUseCase;
-import com.microservice.catalogservice.infrastructure.gateways.payload.VideoEventPayload;
-import com.microservice.catalogservice.infrastructure.gateways.payload.ProgressEventPayload;
+import com.microservice.catalogservice.infrastructure.listerners.payload.VideoEventPayload;
+import com.microservice.catalogservice.infrastructure.listerners.payload.ProgressEventPayload;
 import com.microservice.catalogservice.infrastructure.mappers.ProgressMapper;
 import com.microservice.catalogservice.infrastructure.mappers.VideoMapper;
 
@@ -25,10 +25,12 @@ public class VideoStatusListener {
             groupId = "${kafka.group.id}"
     )
     public void createVideo(VideoEventPayload payload) {
-        var video = videoMapper.eventToDomain(payload);
+        log.info("[KAFKA] Received Video Uploaded Event for Video ID: {}", payload.id());
 
+        var video = videoMapper.eventToDomain(payload);
         videoUseCase.createVideo(video);
-        log.info("[KAFKA] Received Video Uploaded Event for Video ID: {}", video.getId());
+
+        log.debug("[KAFKA] Successfully processed upload event for Video ID: {}", video.getId());
     }
 
     @KafkaListener(

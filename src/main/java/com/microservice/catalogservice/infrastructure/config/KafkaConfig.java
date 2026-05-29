@@ -1,6 +1,6 @@
 package com.microservice.catalogservice.infrastructure.config;
 
-import com.microservice.catalogservice.infrastructure.gateways.payload.VideoEventPayload;
+import com.microservice.catalogservice.infrastructure.listerners.payload.VideoEventPayload;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
