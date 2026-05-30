@@ -22,7 +22,7 @@ public class VideoStatusListener {
 
     @KafkaListener(
             topics = "${kafka.topic.upload}",
-            groupId = "${kafka.group.id}"
+            groupId = "${spring.kafka.consumer.group-id:catalog-group}"
     )
     public void createVideo(VideoEventPayload payload) {
         log.info("[KAFKA] Received Video Uploaded Event for Video ID: {}", payload.id());
@@ -35,7 +35,7 @@ public class VideoStatusListener {
 
     @KafkaListener(
             topics = "${kafka.topic.processing}",
-            groupId = "${kafka.group.id}"
+            groupId = "${spring.kafka.consumer.group-id:catalog-group}"
     )
     public void videoProgress(ProgressEventPayload payload) {
         var progress = progressMapper.eventToDomain(payload);

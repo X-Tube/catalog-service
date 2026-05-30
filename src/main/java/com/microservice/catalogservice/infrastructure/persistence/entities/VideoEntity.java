@@ -18,7 +18,7 @@ import java.util.UUID;
 public class VideoEntity {
 
     @Id
-    private UUID videoId;
+    private UUID id;
 
     private Long author;
 
