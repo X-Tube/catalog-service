@@ -7,12 +7,12 @@ import com.microservice.catalogservice.infrastructure.mappers.VideoMapper;
 import com.microservice.catalogservice.infrastructure.persistence.VideoRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
 @Slf4j
-@Repository
+@Component
 @RequiredArgsConstructor
 public class VideoGatewayRepository implements VideoCommandGateway {
 

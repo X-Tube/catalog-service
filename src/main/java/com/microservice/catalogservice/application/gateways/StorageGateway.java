@@ -1,7 +1,9 @@
 package com.microservice.catalogservice.application.gateways;
 
+import software.amazon.awssdk.services.cloudfront.cookie.CookiesForCustomPolicy;
+
 import java.util.UUID;
 
 public interface StorageGateway {
-    String generateThumbnailURL(UUID id);
+    CookiesForCustomPolicy generateCookiesForCustomPolicy(UUID videoId);
 }

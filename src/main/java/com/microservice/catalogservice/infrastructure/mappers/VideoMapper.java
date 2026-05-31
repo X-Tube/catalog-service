@@ -1,5 +1,6 @@
 package com.microservice.catalogservice.infrastructure.mappers;
 
+import com.microservice.catalogservice.controller.dtos.responses.VideoResponse;
 import com.microservice.catalogservice.domain.Video;
 import com.microservice.catalogservice.infrastructure.listerners.payload.VideoEventPayload;
 import com.microservice.catalogservice.infrastructure.persistence.entities.VideoEntity;
@@ -13,4 +14,6 @@ public interface VideoMapper {
     VideoEntity domainToEntity(Video video);
 
     Video entityToDomain(VideoEntity videoEntity);
+
+    VideoResponse domainToResponse(Video video);
 }
