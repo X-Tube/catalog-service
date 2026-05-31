@@ -14,7 +14,7 @@ import java.util.UUID;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class VideoGatewayRepository implements VideoCommandGateway {
+public class VideoCommandGatewayRepository implements VideoCommandGateway {
 
     private final VideoRepository videoRepository;
     private final VideoMapper videoMapper;

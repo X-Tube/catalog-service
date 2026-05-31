@@ -31,7 +31,7 @@ public class VideoQueryUseCase {
     public PaginatedVideoResponse getVideosForFeed(int size, int page) {
         Pageable pageable = PageRequest.of(page, size);
 
-        Page<Video> videos = videoQueryGateway.getRandomVideosForFeed(pageable);
+        Page<Video> videos = videoQueryGateway.getVideosForFeed(pageable);
 
         List<VideoPreviewResponse> content = videos.getContent().stream()
                 .map(video -> {

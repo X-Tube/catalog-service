@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.UUID;
 
 public interface VideoQueryGateway {
-    Page<Video> getRandomVideosForFeed(Pageable pageable);
+    Page<Video> getVideosForFeed(Pageable pageable);
 
     Video getVideoById(UUID videoId);
 }
