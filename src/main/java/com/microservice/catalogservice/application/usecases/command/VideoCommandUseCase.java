@@ -1,4 +1,4 @@
-package com.microservice.catalogservice.application.usecases;
+package com.microservice.catalogservice.application.usecases.command;
 
 import com.microservice.catalogservice.application.exceptions.VideoNotFoundException;
 import com.microservice.catalogservice.application.gateways.VideoCommandGateway;
@@ -8,22 +8,25 @@ import com.microservice.catalogservice.domain.enums.VideoStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class VideoUseCase {
+public class VideoCommandUseCase {
 
     private final VideoCommandGateway videoGateway;
 
+    @Transactional
     public void createVideo(Video video) {
         if (!videoGateway.isVideoSaved(video.getId())) {
             saveVideo(video);
         }
     }
 
+    @Transactional
     public void handleProgress(VideoProgress progress) {
         try {
             var video = getVideo(progress.getVideoId());

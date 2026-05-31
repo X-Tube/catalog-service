@@ -27,4 +27,8 @@ public class Video {
     private Long duration;
 
     private Long size;
+
+    private String thumbnailUrl;
+
+    private String manifestUrl;
 }

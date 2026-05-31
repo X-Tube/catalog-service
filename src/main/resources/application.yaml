@@ -16,12 +16,27 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/catalog_db}
-    username: ${SPRING_DATASOURCE_USERNAME:user}
-    password: ${SPRING_DATASOURCE_PASSWORD:password}
-    driver-class-name: org.postgresql.Driver
+    primary:
+      jdbc-url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/catalog_db}
+      username: ${SPRING_DATASOURCE_USERNAME:postgres}
+      password: ${SPRING_DATASOURCE_PASSWORD:password}
+      driver-class-name: org.postgresql.Driver
+
+    replica:
+      jdbc-url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5433/catalog_db}
+      username: ${SPRING_DATASOURCE_USERNAME:postgres}
+      password: ${SPRING_DATASOURCE_PASSWORD:password}
+      driver-class-name: org.postgresql.Driver
 
 kafka:
   topic:
     upload: ${KAFKA_TOPIC_VIDEO_UPLOADED:xtube.video.progress}
     processing: ${KAFKA_TOPIC_VIDEO_PROCESSING:xtube.video.progress}
+
+cloudfront:
+  resource-url: "exaple.com"
+  private-key: "123"
+  key-pair-id: "123"
+
+server:
+  domain: "api.xtube.com"

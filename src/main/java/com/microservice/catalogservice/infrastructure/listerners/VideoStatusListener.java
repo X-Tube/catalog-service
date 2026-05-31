@@ -1,6 +1,6 @@
 package com.microservice.catalogservice.infrastructure.listerners;
 
-import com.microservice.catalogservice.application.usecases.command.VideoUseCase;
+import com.microservice.catalogservice.application.usecases.command.VideoCommandUseCase;
 import com.microservice.catalogservice.infrastructure.listerners.payload.VideoEventPayload;
 import com.microservice.catalogservice.infrastructure.listerners.payload.ProgressEventPayload;
 import com.microservice.catalogservice.infrastructure.mappers.ProgressMapper;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class VideoStatusListener {
 
-    private final VideoUseCase videoUseCase;
+    private final VideoCommandUseCase videoUseCase;
     private final VideoMapper videoMapper;
     private final ProgressMapper progressMapper;
 
