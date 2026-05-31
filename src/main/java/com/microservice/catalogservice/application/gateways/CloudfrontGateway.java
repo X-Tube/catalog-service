@@ -4,6 +4,6 @@ import software.amazon.awssdk.services.cloudfront.cookie.CookiesForCustomPolicy;
 
 import java.util.UUID;
 
-public interface StorageGateway {
+public interface CloudfrontGateway {
     CookiesForCustomPolicy generateCookiesForCustomPolicy(UUID videoId);
 }

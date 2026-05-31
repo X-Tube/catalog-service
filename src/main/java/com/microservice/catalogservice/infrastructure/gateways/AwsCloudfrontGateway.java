@@ -1,7 +1,7 @@
 package com.microservice.catalogservice.infrastructure.gateways;
 
 import com.microservice.catalogservice.application.exceptions.CloudFrontException;
-import com.microservice.catalogservice.application.gateways.StorageGateway;
+import com.microservice.catalogservice.application.gateways.CloudfrontGateway;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
-public class S3StorageGateway implements StorageGateway {
+public class AwsCloudfrontGateway implements CloudfrontGateway {
 
     @Value("${cloudfront.resource-url}")
     private String resourceUrl;

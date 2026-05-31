@@ -1,6 +1,6 @@
 package com.microservice.catalogservice.application.usecases;
 
-import com.microservice.catalogservice.application.gateways.StorageGateway;
+import com.microservice.catalogservice.application.gateways.CloudfrontGateway;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseCookie;
@@ -16,7 +16,7 @@ public class CookieUseCase {
     @Value("${server.domain}")
     private String domainUrl;
 
-    private final StorageGateway storageGateway;
+    private final CloudfrontGateway storageGateway;
 
     public List<ResponseCookie> generateCloudFrontCookies(UUID videoId) {
         var awsCookies = storageGateway.generateCookiesForCustomPolicy(videoId);
