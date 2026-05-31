@@ -4,7 +4,7 @@ import com.microservice.catalogservice.domain.Video;
 
 import java.util.UUID;
 
-public interface VideoGateway {
+public interface VideoCommandGateway {
     void saveVideo(Video video);
 
     Video getVideoById(UUID videoId);

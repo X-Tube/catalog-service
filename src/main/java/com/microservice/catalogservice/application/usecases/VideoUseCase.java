@@ -1,7 +1,7 @@
 package com.microservice.catalogservice.application.usecases;
 
 import com.microservice.catalogservice.application.exceptions.VideoNotFoundException;
-import com.microservice.catalogservice.application.gateways.VideoGateway;
+import com.microservice.catalogservice.application.gateways.VideoCommandGateway;
 import com.microservice.catalogservice.domain.Video;
 import com.microservice.catalogservice.domain.VideoProgress;
 import com.microservice.catalogservice.domain.enums.VideoStatus;
@@ -16,7 +16,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class VideoUseCase {
 
-    private final VideoGateway videoGateway;
+    private final VideoCommandGateway videoGateway;
 
     public void createVideo(Video video) {
         if (!videoGateway.isVideoSaved(video.getId())) {
