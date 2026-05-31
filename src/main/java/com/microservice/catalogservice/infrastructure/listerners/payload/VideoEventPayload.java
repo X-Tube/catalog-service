@@ -1,4 +1,4 @@
-package com.microservice.catalogservice.infrastructure.gateways.payload;
+package com.microservice.catalogservice.infrastructure.listerners.payload;
 
 import com.microservice.catalogservice.domain.enums.VideoStatus;
 import lombok.Builder;

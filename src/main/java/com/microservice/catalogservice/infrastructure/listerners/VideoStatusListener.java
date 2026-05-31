@@ -1,8 +1,8 @@
 package com.microservice.catalogservice.infrastructure.listerners;
 
-import com.microservice.catalogservice.application.usecases.VideoUseCase;
-import com.microservice.catalogservice.infrastructure.gateways.payload.VideoEventPayload;
-import com.microservice.catalogservice.infrastructure.gateways.payload.ProgressEventPayload;
+import com.microservice.catalogservice.application.usecases.command.VideoUseCase;
+import com.microservice.catalogservice.infrastructure.listerners.payload.VideoEventPayload;
+import com.microservice.catalogservice.infrastructure.listerners.payload.ProgressEventPayload;
 import com.microservice.catalogservice.infrastructure.mappers.ProgressMapper;
 import com.microservice.catalogservice.infrastructure.mappers.VideoMapper;
 
@@ -22,18 +22,20 @@ public class VideoStatusListener {
 
     @KafkaListener(
             topics = "${kafka.topic.upload}",
-            groupId = "${kafka.group.id}"
+            groupId = "${spring.kafka.consumer.group-id:catalog-group}"
     )
     public void createVideo(VideoEventPayload payload) {
-        var video = videoMapper.eventToDomain(payload);
+        log.info("[KAFKA] Received Video Uploaded Event for Video ID: {}", payload.id());
 
+        var video = videoMapper.eventToDomain(payload);
         videoUseCase.createVideo(video);
-        log.info("[KAFKA] Received Video Uploaded Event for Video ID: {}", video.getId());
+
+        log.info("[KAFKA] Successfully processed upload event for Video ID: {}", video.getId());
     }
 
     @KafkaListener(
             topics = "${kafka.topic.processing}",
-            groupId = "${kafka.group.id}"
+            groupId = "${spring.kafka.consumer.group-id:catalog-group}"
     )
     public void videoProgress(ProgressEventPayload payload) {
         var progress = progressMapper.eventToDomain(payload);
