@@ -34,9 +34,9 @@ kafka:
     processing: ${KAFKA_TOPIC_VIDEO_PROCESSING:xtube.video.progress}
 
 cloudfront:
-  resource-url: "exaple.com"
-  private-key: "123"
-  key-pair-id: "123"
+  resource-url: ${CLOUDFRONT_URL:example.com}
+  private-key: ${CLOUDFRONT_PRIVATE_KEY:private-key-example.pem}
+  key-pair-id: ${CLOUDFRONT_KEY_ID:123}
 
 server:
   domain: "api.xtube.com"
