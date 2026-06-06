@@ -21,18 +21,15 @@ class CookieUseCaseIT extends BaseIntegrationTest {
     @Test
     @DisplayName("Should generate REAL cryptographic CloudFront cookies using the AWS SDK")
     void shouldGenerateRealCloudFrontCookies() {
-        // 1. ARRANGE
         UUID videoId = UUID.randomUUID();
         log.info("[TEST-START] Generating CloudFront cookies for Video ID: {}", videoId);
 
-        // 2. ACT
         long startTime = System.currentTimeMillis();
         List<ResponseCookie> resultCookies = cookieUseCase.generateCloudFrontCookies(videoId);
         long executionTime = System.currentTimeMillis() - startTime;
 
         log.info("[TEST-EXECUTION] RSA Cryptography completed in {} ms", executionTime);
 
-        // 3. ASSERT
         assertThat(resultCookies).hasSize(3);
         log.info("[TEST-ASSERT] Successfully generated exactly 3 cookies.");
 

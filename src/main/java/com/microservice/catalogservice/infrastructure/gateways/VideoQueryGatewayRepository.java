@@ -7,11 +7,11 @@ import com.microservice.catalogservice.domain.Video;
 import com.microservice.catalogservice.infrastructure.mappers.VideoMapper;
 import com.microservice.catalogservice.infrastructure.persistence.VideoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.util.UUID;
 
 @Component
@@ -31,6 +31,7 @@ public class VideoQueryGatewayRepository implements VideoQueryGateway {
         }
     }
 
+    @Cacheable(value = "videos", key = "#videoId")
     @Override
     public Video getVideoById(UUID videoId) {
         try {
