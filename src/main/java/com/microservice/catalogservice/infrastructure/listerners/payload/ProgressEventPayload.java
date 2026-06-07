@@ -10,5 +10,11 @@ public record ProgressEventPayload(
     @NotNull UUID videoId,
 
     @JsonProperty("progress_percent")
-    @NotNull Integer progressPercent
+    @NotNull Integer progressPercent,
+
+    @JsonProperty("manifest_url")
+    @NotNull String manifestUrl,
+
+    @JsonProperty("thumbnail_url")
+    @NotNull String thumbnailUrl
 ) {}

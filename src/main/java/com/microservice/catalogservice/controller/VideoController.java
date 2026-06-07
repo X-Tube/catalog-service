@@ -3,7 +3,6 @@ package com.microservice.catalogservice.controller;
 import com.microservice.catalogservice.application.usecases.query.VideoQueryUseCase;
 import com.microservice.catalogservice.controller.dtos.responses.PaginatedVideoResponse;
 import com.microservice.catalogservice.controller.dtos.responses.VideoResponse;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;

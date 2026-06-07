@@ -5,6 +5,7 @@ import com.microservice.catalogservice.domain.Video;
 import com.microservice.catalogservice.infrastructure.listerners.payload.VideoEventPayload;
 import com.microservice.catalogservice.infrastructure.persistence.entities.VideoEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface VideoMapper {
@@ -15,5 +16,6 @@ public interface VideoMapper {
 
     Video entityToDomain(VideoEntity videoEntity);
 
+    @Mapping(target = "videoId", source = "video.id")
     VideoResponse domainToResponse(Video video);
 }

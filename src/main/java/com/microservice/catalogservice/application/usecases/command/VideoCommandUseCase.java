@@ -39,6 +39,8 @@ public class VideoCommandUseCase {
 
                 case 100:
                     video.setVideoStatus(VideoStatus.READY);
+                    video.setManifestUrl(progress.getManifestUrl());
+                    video.setThumbnailUrl(progress.getThumbnailUrl());
                     saveVideo(video);
                     break;
 

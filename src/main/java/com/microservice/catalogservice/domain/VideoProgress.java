@@ -16,4 +16,8 @@ public class VideoProgress {
     private UUID videoId;
 
     private Integer progressPercent;
+
+    private String thumbnailUrl;
+
+    private String manifestUrl;
 }
