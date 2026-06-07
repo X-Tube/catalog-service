@@ -38,7 +38,10 @@ public class VideoQueryGatewayRepository implements VideoQueryGateway {
             return videoRepository.findById(videoId)
                     .map(videoMapper::entityToDomain)
                     .orElseThrow(() -> new VideoNotFoundException("Video with id: " + videoId + " not found"));
-        } catch (Exception ex) {
+        } catch (VideoNotFoundException ex) {
+            throw ex;
+        }
+        catch (Exception ex) {
             throw throwDbExceptions(ex);
         }
     }
