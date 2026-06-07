@@ -1,10 +1,7 @@
 package com.microservice.catalogservice.infrastructure.persistence.entities;
 
 import com.microservice.catalogservice.domain.enums.VideoStatus;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +26,7 @@ public class VideoEntity {
     private String description;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private VideoStatus videoStatus;
 
     @Column(nullable = false)

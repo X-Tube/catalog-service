@@ -24,7 +24,7 @@ public class VideoQueryGatewayRepository implements VideoQueryGateway {
     @Override
     public Page<Video> getVideosForFeed(Pageable pageable) {
         try {
-            return videoRepository.findAll(pageable)
+            return videoRepository.findAllReadyVideos(pageable)
                     .map(videoMapper::entityToDomain);
         } catch (Exception ex) {
             throw throwDbExceptions(ex);
