@@ -34,3 +34,4 @@ build/
 
 docker-compose.yml
 init-hba.sh
+prometheus.yml
